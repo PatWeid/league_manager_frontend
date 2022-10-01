@@ -4,8 +4,10 @@ import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
-const BoardLeader = () => import("./components/BoardAdmin.vue")
-const BoardPlayer = () => import("./components/BoardUser.vue")
+const BoardAdmin = () => import("./components/BoardAdmin.vue")
+const BoardUser = () => import("./components/BoardUser.vue")
+const ManageTeam = () => import("./components/ManageTeam.vue")
+const AddTeam = () => import("./components/AddTeam.vue")
 
 // router.beforeEach((to, from, next) => {
 //     const publicPages = ['/login', '/register', '/home'];
@@ -48,13 +50,25 @@ const routes = [
         path: "/admin",
         name: "admin",
         // lazy-loaded
-        component: BoardLeader,
+        component: BoardAdmin,
     },
     {
         path: "/user",
         name: "user",
         // lazy-loaded
-        component: BoardPlayer,
+        component: BoardUser,
+    },
+    {
+        path: "/team",
+        name: "team",
+        // lazy-loaded
+        component: ManageTeam,
+    },
+    {
+        path: "/addTeam",
+        name: "addTeam",
+        // lazy-loaded
+        component: AddTeam,
     },
 ];
 const router = createRouter({
