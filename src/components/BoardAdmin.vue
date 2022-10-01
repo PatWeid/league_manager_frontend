@@ -8,14 +8,14 @@
 <script>
 import UserService from "../services/user.service";
 export default {
-  name: "BoardPlayer",
+  name: "BoardAdmin",
   data() {
     return {
       content: "",
     };
   },
   mounted() {
-    UserService.getUserBoard().then(
+    UserService.getAdminBoard().then(
         (response) => {
           this.content = response.data;
         },

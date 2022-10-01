@@ -8,7 +8,7 @@
 <script>
 import UserService from "../services/user.service";
 export default {
-  name: "BoardChairman",
+  name: "BoardUser",
   data() {
     return {
       content: "",

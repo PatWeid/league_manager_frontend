@@ -4,9 +4,8 @@ import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
-const BoardLeader = () => import("./components/BoardLeader.vue")
-const BoardChairman = () => import("./components/BoardChairman.vue")
-const BoardPlayer = () => import("./components/BoardPlayer.vue")
+const BoardLeader = () => import("./components/BoardAdmin.vue")
+const BoardPlayer = () => import("./components/BoardUser.vue")
 
 // router.beforeEach((to, from, next) => {
 //     const publicPages = ['/login', '/register', '/home'];
@@ -50,12 +49,6 @@ const routes = [
         name: "admin",
         // lazy-loaded
         component: BoardLeader,
-    },
-    {
-        path: "/mod",
-        name: "moderator",
-        // lazy-loaded
-        component: BoardChairman,
     },
     {
         path: "/user",

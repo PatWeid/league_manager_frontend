@@ -2,7 +2,7 @@
   <v-container>
     <v-row justify="space-around">
       <v-col  xl="4" lg="4" md="4" sm="12" xs="12">
-        <v-card title="Admin Login">
+        <v-card title="Login">
           <v-form ref="form" v-model="valid" lazy-validation>
             <v-text-field v-model="username" label="Username"></v-text-field>
             <v-text-field v-model="password" type="password" label="Password"></v-text-field>
