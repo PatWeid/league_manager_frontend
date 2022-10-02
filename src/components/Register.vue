@@ -58,8 +58,6 @@ export default {
       this.user.username = this.username;
       this.user.password = this.password;
       this.user.email = this.email;
-
-      console.log('user: ' + this.user.password);
       this.$store.dispatch("auth/register", this.user).then(
           (data) => {
             this.message = data.message;

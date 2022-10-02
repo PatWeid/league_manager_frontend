@@ -4,7 +4,7 @@ import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
-const BoardAdmin = () => import("./components/BoardAdmin.vue")
+const ManageLeague = () => import("./components/ManageLeague.vue")
 const BoardUser = () => import("./components/BoardUser.vue")
 const ManageTeam = () => import("./components/ManageTeam.vue")
 const AddTeam = () => import("./components/AddTeam.vue")
@@ -47,10 +47,10 @@ const routes = [
         component: Profile,
     },
     {
-        path: "/admin",
-        name: "admin",
+        path: "/ManageLeague",
+        name: "manageLeague",
         // lazy-loaded
-        component: BoardAdmin,
+        component: ManageLeague,
     },
     {
         path: "/user",

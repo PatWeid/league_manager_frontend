@@ -5,6 +5,9 @@ class TeamService {
     getTeam(id) {
         return axios.get(API_URL + id + '/team', { headers: authHeader() });
     }
+    getAllTeams() {
+        return axios.get('http://localhost:8080/api/teams', { headers: authHeader() });
+    }
     createTeam(id, team) {
         return axios.post(API_URL + id + '/team', team, { headers: authHeader() });
     }
