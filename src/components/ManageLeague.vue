@@ -6,7 +6,7 @@ import ShowGameDay from "@/components/ShowGameDay";
 <template>
   <div class="container">
     <header class="jumbotron">
-      <p>{{ content }}</p>
+      <p>List with all teams here</p>
     </header>
   </div>
   <body>
@@ -15,6 +15,7 @@ import ShowGameDay from "@/components/ShowGameDay";
   <datepicker v-model="selectedDate"></datepicker>
   <v-btn @click="addDate">Add Date</v-btn>
   <v-btn @click="createLeague">Create League</v-btn>
+  <v-btn @click="deleteLeague">Delete League</v-btn>
   <ShowGameDay></ShowGameDay>
   </body>
 </template>
@@ -50,6 +51,9 @@ export default {
       this.data.ids = this.ids;
       this.data.dates = this.dates;
       LeagueService.createLeague(this.data);
+    },
+    deleteLeague() {
+      LeagueService.deleteLeague();
     }
   },
   mounted() {

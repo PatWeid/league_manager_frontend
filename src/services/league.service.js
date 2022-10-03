@@ -5,5 +5,8 @@ class LeagueService {
     createLeague(ids) {
         return axios.post(API_URL +'/create', ids,  { headers: authHeader() });
     }
+    deleteLeague() {
+        return axios.delete(API_URL + '/delete', { headers: authHeader() });
+    }
 }
 export default new LeagueService();

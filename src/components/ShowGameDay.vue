@@ -9,31 +9,14 @@
       <tbody>
       <tr v-for="game in gameday" :key="game.id">
         <td>{{ game.id }}</td>
-        <td>{{ game.teams }}</td>
         <td>
-          <div>
-            <v-table>
-              <tbody><tr v-for="team in game.teams" :key="team.id">
-      <td>{{team.name}}</td>
-
-    </tr></tbody>
+          <v-container>
+            <v-table v-for="team in game.teams" :key="team.id">
+              <td>{{team.name}}</td>
             </v-table>
-          </div>
-        </td>
-        <td>
-          <v-btn>Delete</v-btn>
-        </td>
-        <td>
-          <v-btn>Update</v-btn>
+          </v-container>
         </td>
       </tr>
-      <v-container>
-        <v-row>
-          <v-col>
-            <v-btn variant="outlined" @click="addStudent">add Student</v-btn>
-          </v-col>
-        </v-row>
-      </v-container>
       </tbody>
     </v-table>
   </v-container>
@@ -42,6 +25,7 @@
 
 <script>
 import GamedayService from "@/services/gameday.service";
+
 export default {
   name: "ShowGameDay",
   data() {
