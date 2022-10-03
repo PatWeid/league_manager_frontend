@@ -1,5 +1,7 @@
 <template>
   <h1>GameDay1</h1>
+  <v-text-field v-model="selectedGameDay" label="Select GameDay"></v-text-field>
+  <v-btn @click="getGameDay">Get Gameday</v-btn>
   <v-container>
     <v-table>
       <thead>
@@ -31,6 +33,7 @@ export default {
   data() {
     return {
       gameday: [],
+      selectedGameDay: 1,
     }
   },
   mounted() {
@@ -47,6 +50,24 @@ export default {
               error.toString();
         }
     );
+  },
+  methods: {
+    getGameDay() {
+      console.log('get GameDay ' + this.selectedGameDay);
+      GamedayService.getGameDay(this.selectedGameDay).then(
+          (response) => {
+            this.gameday = response.data.games;
+          },
+          (error) => {
+            this.gameday =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+          }
+      );
+    },
   }
 
 }
