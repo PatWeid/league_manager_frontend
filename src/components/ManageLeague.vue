@@ -1,6 +1,5 @@
 <script setup>
 import Datepicker from 'vue3-datepicker'
-import ShowGameDay from "@/components/ShowGameDay";
 </script>
 
 <template>
@@ -16,7 +15,6 @@ import ShowGameDay from "@/components/ShowGameDay";
   <v-btn @click="addDate">Add Date</v-btn>
   <v-btn @click="createLeague">Create League</v-btn>
   <v-btn @click="deleteLeague">Delete League</v-btn>
-  <ShowGameDay></ShowGameDay>
   </body>
 </template>
 <script>

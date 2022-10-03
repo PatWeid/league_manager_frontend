@@ -29,7 +29,7 @@
 import GamedayService from "@/services/gameday.service";
 
 export default {
-  name: "ShowGameDay",
+  name: "ShowLeague",
   data() {
     return {
       gameday: [],

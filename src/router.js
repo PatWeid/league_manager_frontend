@@ -5,7 +5,7 @@ import Register from "./components/Register.vue";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const ManageLeague = () => import("./components/ManageLeague.vue")
-const BoardUser = () => import("./components/BoardUser.vue")
+const ShowLeague = () => import("./components/ShowLeague")
 const ManageTeam = () => import("./components/ManageTeam.vue")
 const AddTeam = () => import("./components/AddTeam.vue")
 
@@ -53,10 +53,10 @@ const routes = [
         component: ManageLeague,
     },
     {
-        path: "/user",
-        name: "user",
+        path: "/showLeague",
+        name: "showLeague",
         // lazy-loaded
-        component: BoardUser,
+        component: ShowLeague,
     },
     {
         path: "/team",
