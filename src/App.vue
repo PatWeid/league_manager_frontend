@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-blue-grey">
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       <a href="/" class="navbar-brand">League Manager</a>
       <div class="navbar-nav mr-auto">
@@ -48,7 +48,7 @@
     </nav>
 
     <div class="container">
-      <router-view />
+      <router-view class="bg-blue-grey"/>
     </div>
   </div>
 </template>

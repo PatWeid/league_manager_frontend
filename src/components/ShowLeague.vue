@@ -1,26 +1,68 @@
 <template>
-  <h1>GameDay1</h1>
-  <v-text-field v-model="selectedGameDay" label="Select GameDay"></v-text-field>
-  <v-btn @click="getGameDay">Get Gameday</v-btn>
-  <v-container>
-    <v-table>
-      <thead>
-      <th class="text-left">Game ID</th>
-      <th class="text-left">Teams</th>
-      </thead>
-      <tbody>
-      <tr v-for="game in gameday" :key="game.id">
-        <td>{{ game.id }}</td>
-        <td>
-          <v-container>
-            <v-table v-for="team in game.teams" :key="team.id">
+  <div class="jumbotron">
+    <h1 class="display-4">Current League</h1>
+    <p class="lead">Here you can see which team plays against who on each game day</p>
+    <hr class="my-4">
+
+
+
+
+    <div v-if="gameday">
+    <v-select
+        :items="items"
+        label="Select Gameday"
+        variant="outlined"
+        v-model="selectedGameDay"
+        @update:modelValue="handleSelect"
+    ></v-select>
+    <v-card
+        class="mx-auto"
+        variant="outlined"
+    >
+      <v-card-title>GameDay {{ selectedGameDay }}</v-card-title>
+      <v-card-subtitle>{{ gamedayDate }}</v-card-subtitle>
+      <v-card-item>
+        <v-container>
+          <v-table class="bg-blue-grey" variant="outlined">
+
+            <thead>
+            <v-container>
+            <th class="text-white text-decoration-underline text-center">Game ID</th>
+            </v-container>
+            <th class="text-white text-center text-decoration-underline">Teams</th>
+            </thead>
+
+            <tbody>
+            <tr v-for="game in gameday" :key="game.id">
+              <v-container>
+              <td>{{ game.id }}</td>
+                </v-container>
+              <td>
+                <v-container>
+                  <v-table v-for="team in game.teams" :key="team.id">
+                    <v-container>
               <td>{{team.name}}</td>
-            </v-table>
-          </v-container>
+            </v-container>
+          </v-table>
+        </v-container>
         </td>
-      </tr>
-      </tbody>
-    </v-table>
+
+        <td>
+          <v-btn @click="showMatches(game.id)">Show Matches</v-btn>
+        </td>
+        </tr>
+        </tbody>
+        </v-table>
+        </v-container>
+      </v-card-item>
+    </v-card>
+    </div>
+    <div v-else>
+      <h1>Currently there is no League created.</h1>
+      <h3>Please wait until the admin creates one</h3>
+    </div>
+  </div>
+  <v-container>
   </v-container>
 
 </template>
@@ -34,45 +76,40 @@ export default {
     return {
       gameday: [],
       selectedGameDay: 1,
+      gamedayDate: new Date(),
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     }
   },
   mounted() {
     GamedayService.getGameDay(1).then(
         (response) => {
           this.gameday = response.data.games;
-        },
-        (error) => {
-          this.gameday =
-              (error.response &&
-                  error.response.data &&
-                  error.response.data.message) ||
-              error.message ||
-              error.toString();
+          this.gamedayDate = response.data.date.substring(0, 10);
         }
     );
   },
   methods: {
     getGameDay() {
-      console.log('get GameDay ' + this.selectedGameDay);
       GamedayService.getGameDay(this.selectedGameDay).then(
           (response) => {
             this.gameday = response.data.games;
-          },
-          (error) => {
-            this.gameday =
-                (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                error.message ||
-                error.toString();
+            this.gamedayDate = response.data.date.substring(0, 10);
           }
       );
     },
+    handleSelect() {
+      this.getGameDay();
+    },
+    showMatches(id) {
+      console.log('show matches for game: ' + id);
+      alert('coming soon ;)');
+    }
   }
 
 }
 </script>
 
 <style scoped>
+
 
 </style>
