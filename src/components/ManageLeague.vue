@@ -106,7 +106,7 @@ import Datepicker from 'vue3-datepicker'
           <v-btn variant="outlined" @click="createLeague" :disabled="!isValid">Create League</v-btn>
         </v-card-actions>
         <v-card-actions>
-          <div v-if="!isValid" class="text-red"><p>Select 9 teams and dates</p></div>
+          <div v-if="!isValid" class="text-red"><p>Select 10 teams and 9 dates</p></div>
         </v-card-actions>
         <v-card-actions>
           <v-btn variant="outlined" @click="deleteLeague">Delete League</v-btn>
@@ -114,10 +114,15 @@ import Datepicker from 'vue3-datepicker'
       </v-card>
     </div>
   </div>
+  <div class="form-group">
+    <div v-if="message" class="alert alert-danger" role="alert">
+      {{ message }}
+    </div>
+  </div>
 </template>
 <script>
 import TeamService from "@/services/team.service";
-// import LeagueService from "@/services/league.service";
+import LeagueService from "@/services/league.service";
 export default {
   name: "ManageLeague",
   data() {
@@ -127,19 +132,21 @@ export default {
       selectedDate: {},
       addedTeams: [],
       addedDates: [],
+      addedIDs: [],
+      addedDatesMillis: [],
       datePicker: new Date(),
       ids: [],
       dates: [],
-      nine: 9,
       data: {
         ids: [],
         dates: [],
       },
+      message:"",
     };
   },
   computed: {
     isValid: function () {
-      return this.addedTeams.length === 9 && this.addedDates.length === 9;
+      return this.addedTeams.length === 10 && this.addedDates.length === 9;
     }
   },
   methods: {
@@ -153,22 +160,53 @@ export default {
       console.log('all Dates: ' + this.dates);
     },
     createLeague() {
-      this.data.ids = this.ids;
-      this.data.dates = this.dates;
-      // LeagueService.createLeague(this.data);
+      this.data.ids = this.addedIDs;
+      this.data.dates = this.addedDatesMillis;
+      console.log('data:');
+      console.log(JSON.stringify(this.data));
+      LeagueService.createLeague(this.data).then(
+          (response) => {
+            this.message = response.data;
+          },
+          (error) => {
+            this.message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+          }
+      );
     },
     deleteLeague() {
-      // LeagueService.deleteLeague();
+      LeagueService.deleteLeague();
+      LeagueService.deleteLeague().then(
+          (response) => {
+            this.message = response.data;
+          },
+          (error) => {
+            this.message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+          }
+      );
     },
     addTeamToLeague(team) {
       this.addedTeams.push(team);
+      this.addedIDs.push(team.id);
     },
     addDateToLeague() {
       this.addedDates.push(this.datePicker);
+      this.addedDatesMillis.push(this.datePicker.getTime());
     },
     resetSelection() {
       this.addedTeams = [];
       this.addedDates = [];
+      this.addedIDs = [];
+      this.addedDatesMillis = [];
     },
   },
   mounted() {
