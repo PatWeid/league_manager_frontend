@@ -88,7 +88,7 @@ import Datepicker from 'vue3-datepicker'
                   <tbody>
                   <tr v-for="date in addedDates" :key="date">
                     <v-container>
-                      <td>{{ date }}</td>
+                      <td>{{ date.toString().substring(0,15) }}</td>
                     </v-container>
                   </tr>
                   </tbody>

@@ -1,14 +1,28 @@
 <template>
   <v-container>
     <v-row justify="space-around">
-      <v-col  xl="4" lg="4" md="4" sm="12" xs="12">
-        <v-card title="Login">
-          <v-form ref="form" v-model="valid" lazy-validation>
-            <v-text-field v-model="username" label="Username"></v-text-field>
-            <v-text-field v-model="password" type="password" label="Password"></v-text-field>
-            <v-btn @click="handleRegister">Login</v-btn>
-          </v-form>
-        </v-card>
+      <v-col xl="12" lg="12" md="12" sm="12" xs="12">
+        <div class="jumbotron">
+          <h1 class="display-4">Log into your Account</h1>
+          <p class="lead">When logged in you can use the league manager.</p>
+          <hr class="my-4">
+
+          <v-card class="bg-blue-grey">
+            <v-container>
+              <v-card-title class="bg-blue-grey text-white text-decoration-underline"><h1>Login</h1></v-card-title>
+            </v-container>
+              <v-container>
+                <v-text-field v-model="username" class="bg-white" label="Username"></v-text-field>
+              </v-container>
+              <v-container>
+                <v-text-field v-model="password"  class="bg-white" type="password" label="Password"></v-text-field>
+              </v-container>
+              <v-container>
+                <v-btn @click="handleRegister">Login</v-btn>
+              </v-container>
+          </v-card>
+        </div>
+
       </v-col>
     </v-row>
   </v-container>
