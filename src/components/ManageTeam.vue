@@ -114,7 +114,7 @@ export default {
     },
     deleteTeam() {
       teamService.deleteTeam(this.$store.state.auth.user.id);
-      this.$router.push('/team');
+      this.$router.push('/home');
     },
     createTeam() {
       this.$router.push('/addTeam');

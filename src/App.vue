@@ -50,6 +50,7 @@
     <div class="container" >
       <router-view class="bg-blue-grey"/>
     </div>
+    <div class="h-screen"></div>
   </div>
 </template>
 
