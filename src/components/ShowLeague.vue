@@ -3,10 +3,6 @@
     <h1 class="display-4">Current League</h1>
     <p class="lead">Here you can see which team plays against who on each game day</p>
     <hr class="my-4">
-
-
-
-
     <div v-if="gameday">
     <v-select
         :items="items"

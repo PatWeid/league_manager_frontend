@@ -1,26 +1,35 @@
 <template>
+  <div class="jumbotron">
+    <v-card class="bg-blue-grey" >
+      <v-card-title><h1 class="text-white text-decoration-underline">Your Profile</h1></v-card-title>
+      <hr>
+      <v-card-item>
+        <v-container>
+          <strong>Username: </strong>{{currentUser.username}}
+        </v-container>
+        <v-container>
+        <strong>ID: </strong>{{currentUser.id}}
+        </v-container>
+        <v-container>
+        <strong>E-Mail: </strong>{{currentUser.email}}
+        </v-container>
+        <v-container>
+        <strong>Token: </strong>{{currentUser.accessToken.substring(0, 20)}} ... {{currentUser.accessToken.substr(currentUser.accessToken.length - 20)}}
+        </v-container>
+        <v-container>
+          <strong>Authorities:</strong>
+          <v-container>
+          <ul>
+            <li v-for="role in currentUser.roles" :key="role">{{role}}</li>
+          </ul>
+          </v-container>
+        </v-container>
+      </v-card-item>
+    </v-card>
+  </div>
   <div class="container">
-    <header class="jumbotron">
-      <h3>
-        <strong>{{currentUser.username}}</strong> Profile
-      </h3>
-    </header>
-    <p>
-      <strong>Token:</strong>
-      {{currentUser.accessToken.substring(0, 20)}} ... {{currentUser.accessToken.substr(currentUser.accessToken.length - 20)}}
-    </p>
-    <p>
-      <strong>Id:</strong>
-      {{currentUser.id}}
-    </p>
-    <p>
-      <strong>Email:</strong>
-      {{currentUser.email}}
-    </p>
-    <strong>Authorities:</strong>
-    <ul>
-      <li v-for="role in currentUser.roles" :key="role">{{role}}</li>
-    </ul>
+
+
   </div>
 </template>
 <script>
