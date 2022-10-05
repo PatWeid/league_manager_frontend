@@ -11,8 +11,8 @@
       </v-container>
         <v-container>
           <v-form ref="form" v-model="valid" lazy-validation>
-            <v-row>
-              <v-col>
+            <v-row justify="space-around">
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.name" :rules="notEmpty" label="Teamname"></v-text-field>
                 </v-container>
@@ -29,7 +29,7 @@
                                 label="Double 3"></v-text-field>
                 </v-container>
               </v-col>
-              <v-col>
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.player1" :rules="notEmpty"
                                 label="Player 1"></v-text-field>
@@ -43,7 +43,7 @@
                                 label="Player 3"></v-text-field>
                 </v-container>
               </v-col>
-              <v-col>
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.player4" :rules="notEmpty"
                                 label="Player 4"></v-text-field>

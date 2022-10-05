@@ -54,8 +54,25 @@
     </v-card>
     </div>
     <div v-else>
+      <v-row>
+        <v-col>
+      <div class="text-left">
       <h1>Currently there is no League created.</h1>
-      <h3>Please wait until the admin creates one</h3>
+      <h3>Please wait until the admin creates one.</h3>
+      </div>
+        </v-col>
+        <v-col>
+          <v-img>
+            <v-img
+                class="bg-white"
+                :aspect-ratio="1"
+                height="300px"
+                src="../assets/sad_cat.jpeg"
+                cover
+            ></v-img>
+          </v-img>
+        </v-col>
+      </v-row>
     </div>
   </div>
   <v-container>

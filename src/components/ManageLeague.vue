@@ -14,8 +14,8 @@ import Datepicker from 'vue3-datepicker'
         <v-card-title>Create League</v-card-title>
         <v-card-subtitle>select teams and dates for league</v-card-subtitle>
         <v-card-item>
-          <v-row>
-            <v-col>
+          <v-row justify="space-around">
+            <v-col xl="4" lg="4" md="4" sm="12" xs="12">
               <v-container>
                 <v-table class="bg-blue-grey" variant="outlined">
                   <thead>
@@ -44,7 +44,7 @@ import Datepicker from 'vue3-datepicker'
                 <v-card class="bg-blue-grey">
                   <v-card-title class="text-white text-decoration-underline">Select Date</v-card-title>
                   <v-container>
-                    <datepicker v-model="datePicker" aria-label="test"></datepicker>
+                    <datepicker v-model="datePicker" aria-label="test" :lower-limit="lowerDateLimit"></datepicker>
                   </v-container>
                   <v-card-actions>
                     <v-btn @click="addDateToLeague" variant="outlined" class="bg-white">Add Date</v-btn>
@@ -55,7 +55,7 @@ import Datepicker from 'vue3-datepicker'
             </v-col>
 
 
-            <v-col>
+            <v-col xl="4" lg="4" md="4" sm="12" xs="12">
               <v-container>
                 <v-table class="bg-blue-grey" variant="outlined">
                   <thead>
@@ -76,7 +76,7 @@ import Datepicker from 'vue3-datepicker'
               </v-container>
             </v-col>
 
-            <v-col>
+            <v-col xl="4" lg="4" md="4" sm="12" xs="12">
               <v-container>
                 <v-table class="bg-blue-grey" variant="outlined">
                   <thead>
@@ -109,7 +109,7 @@ import Datepicker from 'vue3-datepicker'
           <div v-if="!isValid" class="text-red"><p>Select 10 teams and 9 dates</p></div>
         </v-card-actions>
         <v-card-actions>
-          <v-btn variant="outlined" @click="deleteLeague">Delete League</v-btn>
+          <v-btn variant="outlined" color="error" @click="deleteLeague">Delete League</v-btn>
         </v-card-actions>
       </v-card>
     </div>
@@ -135,6 +135,7 @@ export default {
       addedIDs: [],
       addedDatesMillis: [],
       datePicker: new Date(),
+      lowerDateLimit: new Date(),
       ids: [],
       dates: [],
       data: {
@@ -150,20 +151,9 @@ export default {
     }
   },
   methods: {
-    addID() {
-      this.ids.push(this.selectedID);
-      console.log('all IDs: ' + this.ids);
-    },
-    addDate() {
-      // this.selectedDate.setHours(3,0,0,0);
-      this.dates.push(this.selectedDate.getTime());
-      console.log('all Dates: ' + this.dates);
-    },
     createLeague() {
       this.data.ids = this.addedIDs;
       this.data.dates = this.addedDatesMillis;
-      console.log('data:');
-      console.log(JSON.stringify(this.data));
       LeagueService.createLeague(this.data).then(
           (response) => {
             this.message = response.data;
@@ -223,6 +213,7 @@ export default {
               error.toString();
         }
     );
+    this.lowerDateLimit = new Date();
   },
 };
 </script>

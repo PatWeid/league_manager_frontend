@@ -12,8 +12,8 @@
       <div v-if="team">
         <v-container>
           <v-form ref="form" v-model="valid" lazy-validation>
-            <v-row>
-              <v-col>
+            <v-row justify="space-around">
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.name" :rules="notEmpty" label="Teamname"></v-text-field>
                 </v-container>
@@ -30,7 +30,7 @@
                                 label="Double 3"></v-text-field>
                 </v-container>
               </v-col>
-              <v-col>
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.player1" :rules="notEmpty"
                                 label="Player 1"></v-text-field>
@@ -44,7 +44,7 @@
                                 label="Player 3"></v-text-field>
                 </v-container>
               </v-col>
-              <v-col>
+              <v-col xl="4" lg="4" md="4" sm="12" xs="12">
                 <v-container>
                   <v-text-field class="bg-white" v-model="team.player4" :rules="notEmpty"
                                 label="Player 4"></v-text-field>
@@ -69,13 +69,24 @@
         </v-card-actions>
         <v-card-actions>
           <v-container>
-            <v-btn @click="deleteTeam" variant="outlined" class="bg-white">Delete Team</v-btn>
+            <v-btn @click="deleteTeam" variant="outlined" color="error" class="bg-white">Delete Team</v-btn>
+            <p class="text-red">not possible during league</p>
           </v-container>
         </v-card-actions>
       </div>
 
 
       <div v-else>
+        <v-card-avatar>
+            <v-img
+                class="bg-white"
+                :aspect-ratio="1"
+                height="150px"
+                width="150px"
+                src="../assets/sad_cat.jpeg"
+                cover
+            ></v-img>
+        </v-card-avatar>
         <v-container>
           <strong class="text-red">You dont have a team yet - create one</strong>
         </v-container>
@@ -86,11 +97,6 @@
         </v-card-actions>
       </div>
     </v-card>
-  </div>
-  <div class="form-group">
-    <div v-if="message" class="alert alert-danger" role="alert">
-      {{ message }}
-    </div>
   </div>
   <div>
   </div>
@@ -109,7 +115,6 @@ export default {
       v => !!v || 'Please enter a value',
     ],
     valid: true,
-    message: "",
   }),
   mounted() {
     teamService.getTeam(this.$store.state.auth.user.id).then((response) => this.team = response.data);
