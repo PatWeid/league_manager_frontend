@@ -88,7 +88,7 @@
             ></v-img>
         </v-card-avatar>
         <v-container>
-          <strong class="text-red">You dont have a team yet - create one</strong>
+          <h3 class="text-red-lighten-3">You dont have a team yet - create one</h3>
         </v-container>
         <v-card-actions>
           <v-container>
