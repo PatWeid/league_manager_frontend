@@ -8,5 +8,6 @@ class LeagueService {
     deleteLeague() {
         return axios.delete(API_URL + '/delete', { headers: authHeader() });
     }
+
 }
 export default new LeagueService();

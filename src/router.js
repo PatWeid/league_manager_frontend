@@ -2,12 +2,14 @@ import { createWebHistory, createRouter } from "vue-router";
 import Home from "./components/Home.vue";
 import Login from "./components/Login.vue";
 import Register from "./components/Register.vue";
+import showMatches from "@/components/ShowMatches";
 // lazy-loaded
 const Profile = () => import("./components/Profile.vue")
 const ManageLeague = () => import("./components/ManageLeague.vue")
 const ShowLeague = () => import("./components/ShowLeague")
 const ManageTeam = () => import("./components/ManageTeam.vue")
 const AddTeam = () => import("./components/AddTeam.vue")
+// const ShowMatches = () => import("./components/ShowMatches")
 
 // router.beforeEach((to, from, next) => {
 //     const publicPages = ['/login', '/register', '/home'];
@@ -69,6 +71,13 @@ const routes = [
         name: "addTeam",
         // lazy-loaded
         component: AddTeam,
+    },
+    {
+        path: "/showMatches/:id",
+        name: "showMatches",
+        // lazy-loaded
+        component: showMatches,
+        props: true,
     },
 ];
 const router = createRouter({
