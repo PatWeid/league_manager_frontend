@@ -12,7 +12,6 @@ class TeamService {
         return axios.post(API_URL + id + '/team', team, { headers: authHeader() });
     }
     deleteTeam(id) {
-        console.log('delete');
         return axios.delete(API_URL + id + '/team', { headers: authHeader() });
     }
     updateTeam(id, team) {

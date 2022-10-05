@@ -14,46 +14,46 @@
             <v-row>
               <v-col>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.name" :rules="notEmtpy" label="Teamname"></v-text-field>
+                  <v-text-field class="bg-white" v-model="team.name" :rules="notEmpty" label="Teamname"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.double1" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.double1" :rules="notEmpty"
                                 label="Double 1"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.double2" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.double2" :rules="notEmpty"
                                 label="Double 2"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.double3" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.double3" :rules="notEmpty"
                                 label="Double 3"></v-text-field>
                 </v-container>
               </v-col>
               <v-col>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player1" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player1" :rules="notEmpty"
                                 label="Player 1"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player2" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player2" :rules="notEmpty"
                                 label="Player 2"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player3" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player3" :rules="notEmpty"
                                 label="Player 3"></v-text-field>
                 </v-container>
               </v-col>
               <v-col>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player4" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player4" :rules="notEmpty"
                                 label="Player 4"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player5" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player5" :rules="notEmpty"
                                 label="Player 5"></v-text-field>
                 </v-container>
                 <v-container>
-                  <v-text-field class="bg-white" v-model="team.player6" :rules="notEmtpy"
+                  <v-text-field class="bg-white" v-model="team.player6" :rules="notEmpty"
                                 label="Player 6"></v-text-field>
                 </v-container>
               </v-col>
@@ -86,7 +86,7 @@ export default {
   name: "AddTeam",
   data: () => ({
     team: {},
-    notEmtpy: [
+    notEmpty: [
       v => !!v || 'Please enter a value',
     ],
     valid: true,

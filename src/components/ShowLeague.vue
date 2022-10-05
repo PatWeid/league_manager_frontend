@@ -80,7 +80,9 @@ export default {
     GamedayService.getGameDay(1).then(
         (response) => {
           this.gameday = response.data.games;
-          this.gamedayDate = response.data.date.substring(0, 10);
+          if (this.gameday != null) {
+            this.gamedayDate = response.data.date.substring(0, 10);
+          }
         }
     );
   },

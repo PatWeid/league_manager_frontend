@@ -39,7 +39,6 @@ export default {
   name: "LoginComponent",
   components: {},
   data: () => ({
-    valid: true,
     username: '',
     password: '',
     successful: false,
